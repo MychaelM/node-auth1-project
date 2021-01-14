@@ -14,8 +14,13 @@ function findByID(id) {
   return db("users").select("id", "username").where({id}).first()
 }
 
+function findBy(filter) {
+  return db("users").select("id", "username", "password").where(filter);
+}
+
 module.exports = {
   add,
   find,
-  findByID
+  findByID,
+  findBy
 }
