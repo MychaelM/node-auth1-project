@@ -34,4 +34,28 @@ router.post("/users", async (req, res, next) => {
   }
 })
 
+router.post("/login", async (req, res, next) => {
+  try {
+    const {username, password} = req.body
+    const user = await Users.findBy({username}).first()
+
+    const passwordValid = await bcrypt.compare(password, user.password)
+
+    if (!user || !passwordValid) {
+      return res.status(401).json({
+        message: "Invalid Creds"
+      })
+    }
+
+    req.session.user = user
+
+    res.json({
+      message: `Welcome ${user.username}`
+    })
+
+  } catch(err) {
+    next(err)
+  }
+})
+
 module.exports = router
