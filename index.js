@@ -10,7 +10,7 @@ server.use(express.json())
 server.use(usersRouter)
 
 server.use((err, req, res, next) => {
-  console.lof(err)
+  console.log(err)
 
   res.status(500).json({
     message: "Something is broken"
