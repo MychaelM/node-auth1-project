@@ -4,6 +4,7 @@
   "description": "Use `Node.js`, `Express` and `Knex` to build an API that provides **Register** and **Login** functionality using `SQLite` to store _User_ information. Make sure the password is not stored as plain text.",
   "main": "index.js",
   "scripts": {
+    "server": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +22,8 @@
     "express": "^4.17.1",
     "knex": "^0.21.15",
     "sqlite3": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
