@@ -1,10 +1,11 @@
 const express = require('express')
 const bcrypt = require('bcryptjs')
 const Users = require('./users-model')
+const { restrict } = require('./users-middleware')
 
 const router = express.Router()
 
-router.get("/users", async (req, res, next) => {
+router.get("/users", restrict(), async (req, res, next) => {
   try {
     res.json(await Users.find())
   } catch(err) {
@@ -19,7 +20,7 @@ router.post("/users", async (req, res, next) => {
 
     if(user) {
       return res.status(409).json({
-        message: "This username is already her so tough luck I guess"
+        message: "This username is already here so tough luck I guess"
       })
     }
 
